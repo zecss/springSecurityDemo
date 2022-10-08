@@ -38,7 +38,7 @@ public class LoginServiceImpl  implements LoginService {
 //        生成jwt
         String jwt = JwtUtil.createJWT(userId);
 //        用户信息存入redis
-        redisCache.setCacheObject("login"+userId,loginUser);
+        redisCache.setCacheObject("login:"+userId,loginUser);
 //        返回信息
         return new ResponseResult(200,"success",jwt);
     }

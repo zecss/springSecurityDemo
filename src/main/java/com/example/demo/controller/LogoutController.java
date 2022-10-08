@@ -13,7 +13,7 @@ public class LogoutController {
     @Autowired
     private LogoutService logoutService;
 
-    @GetMapping
+    @GetMapping("/user/logout")
     public ResponseResult logout(){
         return logoutService.logout();
     }

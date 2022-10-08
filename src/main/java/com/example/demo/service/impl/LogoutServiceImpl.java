@@ -19,9 +19,10 @@ public class LogoutServiceImpl implements LogoutService {
 //        获取认证信息 删除redis中用户信息
 //        1.获取认证信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
 //        2.获取redis key
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-        String userId = loginUser.getUser().getId().toString();
+        Long userId = loginUser.getUser().getId();
         String redisKey = "login:"+userId;
         redisCache.deleteObject(redisKey);
         return new ResponseResult(200,"注销成功");
